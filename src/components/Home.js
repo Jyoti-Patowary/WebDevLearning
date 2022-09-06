@@ -17,6 +17,7 @@ import requests from "./request";
 import { maxWidth } from "@mui/system";
 import './Home.css'
 import SwipeableTextMobileStepper from "./Carousel"
+import MovieCard from "./MovieCard";
 
 
 
@@ -67,12 +68,7 @@ const Home = () => {
       <div className="movvert">      
       {movies.map((movie)=>{
         return(
-          <div className="card-container">
-            <div className="card-second">
-            <img style={{height:'auto',maxWidth:'100vw'}} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt="ming"/>
-            <div className="title-text">{movie?.original_title}</div>
-            </div>
-          </div>
+          <MovieCard movie={movie} titleNetflix="netflix title"/>
         );
       })}
     </div>
