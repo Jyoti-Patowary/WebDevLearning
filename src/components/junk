@@ -1,0 +1,26 @@
+   // <Box>
+        //     <Box sx = {{bgcolor: "black", display: "flex", justifyContent: 'center', flexGrow: 1 }}>
+        //         <Typography >
+        //             <div className="logo">
+        //             <img src= {Netflix2} alt = "netflix logo"></img> 
+        //             <img src={Netflix1} alt = "netflix logo 2"></img>
+        //             </div>
+        //         </Typography>
+        //             {pages.map((page) => <ListItem sx={{color: "red", display: "flex", justifyContent: "center", alignItems: "center", pt: "40px", }} key={pages}>{page}</ListItem>)}
+                
+        //    </Box>
+        //  </Box>
+
+        //     const baseURL = "https://api.themoviedb.org/3/movie/550?api_key=3666a25e61485ebf50f59fec841801e2"
+    
+//     const [post, setPost] = useState([]);
+
+//         useEffect(() => {
+//              axios.get(baseURL).then((response) => {
+//              console.log(response.data);
+//              setPost(response.data);
+//               });
+//             }, []);
+//   console.log("cdds", post);
+
+  
