@@ -1,5 +1,40 @@
-.list {
+/* .list {
     display: flex;
     justify-content: center;
-    align-items: center2694;
+    align-items: center;
+} */
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
 }
+
+.title-text{
+    color: aliceblue;
+}
+
+.card-second{
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Mb{
+    display: flex;
+    flex-direction: column;
+}
+
+.websiteTitle{
+    color: red;
+}
+
+

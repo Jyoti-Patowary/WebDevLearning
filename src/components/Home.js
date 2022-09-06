@@ -14,45 +14,68 @@ import axios from "axios";
 import instance from "./axios";
 import { useEffect, useState } from "react";
 import requests from "./request";
+import { maxWidth } from "@mui/system";
+import './Home.css'
+import SwipeableTextMobileStepper from "./Carousel"
+
+
+
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [carouselState, setcarouselState]=useState([])
 
   const movie = movies[Math.floor(Math.random() * movies.length)];
+  console.log("movie ", movie)
+
+  const makeCarouseldata=(md)=>{
+    let images=[]
+    md.map((mddata)=>{
+      const temp = {
+          label:`${mddata.title}`,
+          imgPath:`https://image.tmdb.org/t/p/original/${mddata.backdrop_path}`  
+      }
+  
+      images.push(temp)
+  })
+  setcarouselState(images)
+  }
 
   useEffect(() => {
     axios.get(requests.fetchTopRated).then((response) => {
+      console.log("Hello",response);
       setMovies(response.data.results);
+      console.log({movies})
+      console.log("movie ")
+      console.log("useeffect run")
+      makeCarouseldata(response.data.results);
+      
     });
   }, []);
+
   console.log(movies);
+  console.log({carouselState})
+  
   return (
-    <div>
-      <div>
-        <div
-          style={{
-            // backgroundSize: "100% !important",
-            // backgroundRepeat: "no-repeat !important",
-            // backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
-            height: "90vh",
-            background: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path}) 100%`,
-          }}
-        />
-        {/* <CardMedia
-            component="img"
-            height="500"
-            image={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
-            alt={movie?.title}
-          />
-        </CardContent> */}
-        {/* <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5">
-              {movie?.title}
-            </Typography>
-          </CardContent>
-        </CardActionArea> */}
+    <div className="Mb">
+      <div className="WebsiteTitleConatiner">
+        <h1 className="websiteTitle">SETFLIX</h1>
       </div>
+      <div className="carousel-box">
+        <SwipeableTextMobileStepper md={carouselState} /> 
+      </div>
+      <div className="movvert">      
+      {movies.map((movie)=>{
+        return(
+          <div className="card-container">
+            <div className="card-second">
+            <img style={{height:'auto',maxWidth:'100vw'}} src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt="ming"/>
+            <div className="title-text">{movie?.original_title}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
     </div>
   );
 };
